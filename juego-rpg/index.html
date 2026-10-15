@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG Gráfico - TypeScript</title>
+    <link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Tarjeta del Personaje -->
+        <div class="character-card" id="character-card">
+            <h2 id="char-name">Nombre del Personaje</h2>
+            
+            <div class="stat-row">
+                <span>❤️ Vida:</span>
+                <div class="health-bar-container">
+                    <div class="health-bar" id="health-bar" style="width: 100%;"></div>
+                </div>
+                <span id="health-text">100/100</span>
+            </div>
+
+            <div class="equipment">
+                <div class="item-slot">
+                    <span class="icon">⚔️</span>
+                    <div>
+                        <small>Arma Actual</small>
+                        <strong id="weapon-name">Ninguna</strong>
+                        <small id="weapon-damage" class="subtext">0 daño</small>
+                    </div>
+                </div>
+                <div class="item-slot">
+                    <span class="icon">✨</span>
+                    <div>
+                        <small>Habilidad Actual</small>
+                        <strong id="ability-name">Ninguna</strong>
+                        <small id="ability-power" class="subtext">0 poder</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panel de Acciones -->
+        <div class="actions-panel">
+            <button id="btn-atacar">⚔️ Atacar</button>
+            <button id="btn-habilidad">✨ Usar Habilidad</button>
+            <button id="btn-cambiar-arma">🔄 Cambiar Arma</button>
+            <button id="btn-recibir-danio">💥 Recibir Daño (20)</button>
+        </div>
+
+        <!-- Registro de Batalla -->
+        <div class="battle-log" id="battle-log">
+            <div class="log-entry">🎮 ¡La batalla ha comenzado!</div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

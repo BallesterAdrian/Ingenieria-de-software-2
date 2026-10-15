@@ -1,0 +1,127 @@
+:root {
+    --bg-color: #1a1a2e;
+    --card-bg: #16213e;
+    --accent: #0f3460;
+    --highlight: #e94560;
+    --text: #ffffff;
+    --health-green: #4caf50;
+    --health-low: #f44336;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.game-container {
+    width: 400px;
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.character-card {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: var(--accent);
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+.character-card.shake {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.stat-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.health-bar-container {
+    flex-grow: 1;
+    height: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.health-bar {
+    height: 100%;
+    background-color: var(--health-green);
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.equipment {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.item-slot {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: rgba(255,255,255,0.05);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.icon { font-size: 24px; }
+.subtext { color: #aaa; display: block; font-size: 12px; }
+
+.actions-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: var(--highlight);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.1s, opacity 0.2s;
+}
+
+button:hover { opacity: 0.9; }
+button:active { transform: scale(0.95); }
+
+.battle-log {
+    background-color: #000;
+    height: 150px;
+    overflow-y: auto;
+    padding: 10px;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 14px;
+    border: 1px solid #333;
+}
+
+.log-entry { margin-bottom: 5px; border-bottom: 1px solid #222; padding-bottom: 3px; }
