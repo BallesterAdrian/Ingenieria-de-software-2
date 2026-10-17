@@ -1,5 +1,5 @@
 // ============================================
-// CLASES DE LÓGICA (Tu código original mejorado con getters)
+// CLASES DE LÓGICA 
 // ============================================
 
 class Arma {
@@ -56,8 +56,7 @@ class Personaje {
         }
         return '';
     }
-
-    // Getters necesarios para la UI
+    
     getNombre(): string { return this.nombre; }
     getVida(): number { return this.vida; }
     getVidaMaxima(): number { return this.vidaMaxima; }
@@ -73,8 +72,7 @@ class GameUI {
     
     private personaje: Personaje;
     private armasDisponibles: Arma[];
-    
-    // Elementos del DOM
+
     private charName: HTMLElement;
     private healthBar: HTMLElement;
     private healthText: HTMLElement;
@@ -121,7 +119,7 @@ class GameUI {
             this.btnHabilidad.disabled = true;
             this.btnRecibirDaño.disabled = true;
         }
-        // Actualizar barra de vida
+
         const vida = this.personaje.getVida();
         const vidaMax = this.personaje.getVidaMaxima();
         const porcentaje = (vida / vidaMax) * 100;
@@ -129,10 +127,8 @@ class GameUI {
         this.healthBar.style.width = `${porcentaje}%`;
         this.healthText.textContent = `${vida}/${vidaMax}`;
         
-        // Cambiar color de la barra si la vida es baja
         this.healthBar.style.backgroundColor = porcentaje < 30 ? '#f44336' : '#4caf50';
 
-        // Actualizar equipo
         const arma = this.personaje.getArma();
         this.weaponName.textContent = arma.getNombre();
         this.weaponDamage.textContent = `${arma.getDanio()} de daño`;
@@ -148,7 +144,7 @@ class GameUI {
         entry.className = 'log-entry';
         entry.textContent = `> ${mensaje}`;
         this.battleLog.appendChild(entry);
-        this.battleLog.scrollTop = this.battleLog.scrollHeight; // Auto-scroll
+        this.battleLog.scrollTop = this.battleLog.scrollHeight; 
     }
 
     private animarDanio(): void {
@@ -171,12 +167,11 @@ class GameUI {
         document.getElementById('btn-recibir-danio')!.addEventListener('click', () => {
             const mensaje = this.personaje.recibirDanio(20);
             this.agregarLog(mensaje);
-            this.animarDanio(); // Efecto visual de golpe
+            this.animarDanio(); 
             this.actualizarUI();
         });
 
         document.getElementById('btn-cambiar-arma')!.addEventListener('click', () => {
-            // Ciclo gráfico entre las armas disponibles
             const armaActual = this.personaje.getArma();
             const indiceActual = this.armasDisponibles.findIndex(a => a.getNombre() === armaActual.getNombre());
             const siguienteIndice = (indiceActual + 1) % this.armasDisponibles.length;
@@ -184,7 +179,7 @@ class GameUI {
 
             const mensaje = this.personaje.cambiarArma(nuevaArma);
             this.agregarLog(mensaje);
-            this.actualizarUI(); // ¡Aquí sucede el cambio gráfico!
+            this.actualizarUI(); 
         });
     }
 }
@@ -196,14 +191,9 @@ class GameUI {
 const espada = new Arma("Espada de fuego", 30);
 const arco = new Arma("Arco mágico", 20);
 const daga = new Arma("Daga de sombra", 15);
-
 const curacion = new Habilidad("Curación", 25);
 const escudo = new Habilidad("Escudo mágico", 15);
-
-// Creamos al personaje (Nota: agregué 'vidaMaxima' para la barra de porcentaje)
 const guerrero = new Personaje("Guerrero", 100, 100, espada, curacion);
-
-// Inicializamos la interfaz gráfica
 const ui = new GameUI(guerrero, [espada, arco, daga]);
 
 ui.agregarLog("¡Bienvenido! Tu personaje está listo para la acción.");
